@@ -85,8 +85,6 @@ def create_draw():
     )
 
 # Kurzer Test von Samuel
-
-
 @app.route('/testbutton')
 def test_button():
     return jsonify(
