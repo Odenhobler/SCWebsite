@@ -140,4 +140,4 @@ document.getElementById("buttonkickplayer").addEventListener('click',kickPlayer,
 //Lobby 
 
 //Button Neuer Spieler
-document.getElementById("buttonaddnewplayer").addEventListener('click',addPlayer,false);
+document.getElementById("btnaddpl").addEventListener('click',addPlayer,false);
