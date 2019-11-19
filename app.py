@@ -1,12 +1,21 @@
 from flask import Flask, render_template, jsonify, request
+# from .apptest import anotherbutton
 app = Flask (__name__, static_url_path='/static')
 
 state = 0 #0 before initialization, 1 after, 2 for running tournament
 mode = 1
 #Possible tournament modes: 0 Single Elimination; 1 Double; 2 Triple; 3 League; 4 League + Play-Offs
 cpp = 2    #Characters per player. 1 in League modes, 1-3 in Elimination modes
-plist = []
-clist = []
+
+class lop:  #list of players
+    names = []
+    chars = []
+    def info(self, i):
+        if i is None:
+            print("names: " + str(self.names) + ", chars: " + str(self.chars))
+        else:
+            print("index: " + str(i), "name: " + str(self.names[i]) + ", char: " + str(self.chars[i]))
+listOfPlayers = lop()
 
 @app.route('/')
 def index():
@@ -21,8 +30,8 @@ def get_state():
         #To set state 0, no further input is required. Everything is set to default values.
         mode = 1
         cpp = 1
-        plist = []
-        clist = []
+        listOfPlayers.names = []
+        listOfPlayers.chars = []
         state = 0
         return jsonify(
             tournamentState=state,
@@ -33,8 +42,8 @@ def get_state():
         #To set state 1, tournament mode and number of Spielfelder are required as input. Internal variables are set accordingly.
         mode = request.args.get('tournamentMode', type=int)
         cpp = request.args.get('numberOfSpielfeld', type=int)
-        plist = []
-        clist = []
+        listOfPlayers.names = []
+        listOfPlayers.chars = []
         state = 1
         return jsonify(
             tournamentState=state,
@@ -64,17 +73,17 @@ def add_player():
     #TODO Warn if player name already exists
     chars=request.args.get('chars', type=int)   #int[], dim=cpp. Maybe add a check if the dimension is correct.
     if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
-        plist.append(plname)
-        clist.append(chars)  #This should ultimately be a 2-dimensional array.
-    return jsonify(listOfPlayers=[plist, clist]) #Put into one object
+        listOfPlayers.names.append(plname)
+        listOfPlayers.chars.append(chars)  #This should ultimately be a 2-dimensional array.
+    return jsonify(listOfPlayers=listOfPlayers) #Put into one object
 
 @app.route('/kickplayer')
 def kik_player():
     plname=request.args.get('name', type=str)
-    pos = plist.index(plname)
-    del plist[pos]
-    del clist[pos]
-    return jsonify(listOfPlayers=plist, listOfCharacters=clist)
+    pos = listOfPlayers.names.index(plname)
+    del listOfPlayers.names[pos]
+    del listOfPlayers.chars[pos]
+    return jsonify(listOfPlayers=listOfPlayers)
 
 # Create draw. Probably obsolete because this is case 2 in /tournamentState
 @app.route('/begintournament')
@@ -87,6 +96,7 @@ def create_draw():
 # Kurzer Test von Samuel
 @app.route('/testbutton')
 def test_button():
+    # return(jsonify(testAlert=anotherbutton(5)))
     return jsonify(
         testAlert="mess"
     )
@@ -94,4 +104,3 @@ def test_button():
 
 if __name__ == '__main__':
 	app.run (host='0.0.0.0')
-
