@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to the Stage of History!</title>
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <!--Skript hier im HTML laden und/oder auch im main.js?
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+    -->
+</head>
+<body>
+    <div class="fixedheader" style="display: block;">
+        <iframe class="video" src="https://www.youtube.com/embed/dOVN70pYEPA" allowfullscreen></iframe>
+        <div>
+            <table class="table">
+                
+                <tr>
+                    <td><button class="buttonheader" id="btnmatches">Begegnungen</button></td>
+                </tr>
+                <tr>
+                    <td><button class="buttonheader" id="btntree">Baum</button></td>
+                </tr>
+                <tr>
+                    <td><button class="buttonheader" id="btnlobby">Lobby</button></td>
+                </tr>
+                <tr>
+                    <td><button class="buttonheader" id="btnreset">Reset</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="sectionlobby" class="content">
+        <h1>Lobby</h1>
+        <div id="enlp"></div>
+        <button class="buttoncontent" id="newplayer">+</button>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+        <p>Das ist ein Text in der sectionloby.</p>
+    </div>
+    <div id="sectionmatches" class="content">
+        <h1>Begegnungen</h1>
+    </div>
+    <div id="sectiontree" class="content">
+        <h1>Turnierbaum</h1>
+    </div>
+    <div id="sectionreset" class="content">
+        <p>States: <br> 
+            0 = Turnier noch nicht initiiert<br>
+            1 = Turnier initiiert, aber noch nicht gestartet, wartet auf Eingabe der Spieler <br>
+            2 = Turnier läuft        <br>
+            </p>
+            <button class="buttoncontent" id="buttonsetto0">Set to 0</button>
+            <button class="buttoncontent" id="buttonsetto1">Set to 1</button>
+            <button class="buttoncontent" id="buttonsetto2">Set to 2</button>
+            <button class="buttoncontent" id="buttonkickplayer">Kick Player</button>
+            <button class="buttoncontent" id="buttonaddnewplayer">Eintragen</button>
+            <button class="buttoncontent" id="btntest">Testalert</button>
+    </div>
+    <script src="../static/index.js"></script> 
+</body>
+</html>
