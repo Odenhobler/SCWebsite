@@ -62,10 +62,14 @@ def singletree():
             cur.p1 = matches[cur.parent].p2
         h = 2**(nRounds-cur.rd+1)-1
         cur.p2 = h-cur.p1
-    for i in range(int(nMatch/2)+1):
+    for i in range(nMatch):
         cur = matches[i]
-        cur.p1 = plist[cur.p1]
-        cur.p2 = plist[cur.p2]
+        if cur.rd==1:
+            cur.p1 = plist[cur.p1]
+            cur.p2 = plist[cur.p2]
+        else:
+            cur.p1 = None
+            cur.p2 = None
 
     # matches[1].score(3,0)
     # matches[matches[1].parent].p1 = matches[1].win
@@ -79,7 +83,8 @@ def addscore(id, sp1, sp2):
     if cur.id != id: return("ERROR: wrong id")
     cur.score(sp1, sp2)
     if(cur.parent>=0):  #No "else" because otherwise this should be the final match.
-        if(id%2==1): #NOTE Assuming that every match has one even predecessor (child) and one odd one. This is not necessarily true!
+        if(matches[cur.parent].p1 is None):
+        # if(id%2==1): #NOTE Assuming that every match has one even predecessor (child) and one odd one. This is not necessarily true!
             matches[cur.parent].p1 = cur.win
         else:
             matches[cur.parent].p2 = cur.win
