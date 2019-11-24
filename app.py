@@ -66,7 +66,7 @@ def get_state():
             tournamentMode=mode,
             numberOfSpielfeld=cpp,
             listOfPlayers=listOfPlayers.names,
-            listOfChars=listOfPlayers.chars[0]
+            listOfChars=listOfPlayers.chars
         )
 
 # Add player
