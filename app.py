@@ -74,12 +74,17 @@ def get_state():
 def add_player():
     global listOfPlayers
     plname=request.args.get('name', type=str)
+    print("Hi. My name is " + plname)
     #TODO Warn if player name already exists
-    chars=request.args.get('chars')   #int[], dim=cpp. Maybe add a check if the dimension is correct.
+    chars=request.get_json()
+    # print(is_json(chars))
+    # chars=request.args.get('chars', type=str)   #int[], dim=cpp. Maybe add a check if the dimension is correct.
+    print("Hi. My character is ")
+    print(chars[0])
     if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
         listOfPlayers.names.append(plname)
         # listOfPlayers.chars.append(chars)
-        listOfPlayers.chars=chars
+        listOfPlayers.chars=chars1
     return jsonify(
         listOfPlayers=listOfPlayers.names,
         # listOfChars=listOfPlayers.chars
