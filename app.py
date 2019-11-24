@@ -9,7 +9,7 @@ cpp = 2    #Characters per player. 1 in League modes, 1-3 in Elimination modes
 
 class lop:  #list of players
     names = []
-    chars = []
+    chars = [42]
     def info(self, i):
         if i is None:
             print("names: " + str(self.names) + ", chars: " + str(self.chars))
@@ -66,7 +66,7 @@ def get_state():
             tournamentMode=mode,
             numberOfSpielfeld=cpp,
             listOfPlayers=listOfPlayers.names,
-            listOfChars=listOfPlayers.chars[0][0]
+            listOfChars=listOfPlayers.chars[0]
         )
 
 # Add player
