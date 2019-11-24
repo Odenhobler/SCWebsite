@@ -120,12 +120,20 @@ function addPlayer(){
         char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
         newChars.push(char);
     }
-    alert("Selected " + newChars);
-    jQuery.getJSON("/listofplayers", {name: newPlayer, chars: newChars[0], chars: "Kino", chars: "Dammie"},
+    $.ajax({
+      type: "POST",
+      contentType: "application/json;charset=utf-8",
+      url: "/listofplayers",
+      traditional: "true",
+      data: JSON.stringify(newChars),
+      dataType: "json"
+      });
+
+    /*jQuery.getJSON("/listofplayers", {name: newPlayer, chars: newChars[0], chars: "Kino", chars: "Dammie"},
         function(){
             syncTournamentState(4, 0, 0);
         });
-    alert("Received " + listOfChars);
+    alert("Received " + listOfChars);*/
 }
 
 

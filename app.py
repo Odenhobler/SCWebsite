@@ -90,6 +90,11 @@ def add_player():
         # listOfChars=listOfPlayers.chars
         listOfChars="CHAR1"
     )
+#    if request.method == 'POST':
+# 	   names = request.get_json()
+# 		   for name in names:
+# 			print name			
+# 	return '', 200
 
 @app.route('/kickplayer')
 def kik_player():
