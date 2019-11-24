@@ -54,7 +54,7 @@ function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4
             tournamentMode = data.tournamentMode;
             numberOfSpielfeld = data.numberOfSpielfeld;
             listOfPlayers = data.listOfPlayers;
-            //playerListToLobby();
+            playerListToLobby();
             switchDivs();
         });
 }
