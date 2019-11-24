@@ -1,2 +1,5 @@
 Icons für die Ausgabe der Chars in enlpl 
 Abfrage bei addplayer noch spielerfreundlich
+
+Die aufgesplittete Liste (listOfPLayers, listOfChars) wieder als ein Objekt ans Frontend
+    Dazu aber erstmal JSON in Python-Objekt überführen. Das heißt: Das Dict, was im Backend ankommt, in ein Objekt überführen, dann appenden, dann wieder zurück zum Frontend
