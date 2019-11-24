@@ -27,7 +27,6 @@ def index():
 def get_state():
     global state, mode, cpp, listOfPlayers
     ask = request.args.get('tournamentState', type=int)
-    # if(ask==4): return jsonify(tournamentState=ask)
     if(ask==0):
         #To set state 0, no further input is required. Everything is set to default values.
         mode = 1
@@ -62,16 +61,16 @@ def get_state():
             numberOfSpielfeld=cpp
         )
     else:
-        # state=42
         return jsonify(
             tournamentState=state,
-            # tournamentMode=mode,
-            # numberOfSpielfeld=cpp,
+            tournamentMode=mode,
+            numberOfSpielfeld=cpp,
         )
 
 # Add player
 @app.route('/listofplayers')
 def add_player():
+    global listOfPlayers
     plname=request.args.get('name', type=str)
     #TODO Warn if player name already exists
     chars=request.args.get('chars', type=int)   #int[], dim=cpp. Maybe add a check if the dimension is correct.
@@ -82,19 +81,12 @@ def add_player():
 
 @app.route('/kickplayer')
 def kik_player():
+    global listOfPlayers
     plname=request.args.get('name', type=str)
     pos = listOfPlayers.names.index(plname)
     del listOfPlayers.names[pos]
     del listOfPlayers.chars[pos]
     return jsonify(listOfPlayers=listOfPlayers)
-
-# Create draw. Probably obsolete because this is case 2 in /tournamentState
-@app.route('/begintournament')
-def create_draw():
-    state = True
-    return jsonify(
-        tournamentstate=state
-    )
 
 # Kurzer Test von Samuel
 @app.route('/testbutton')
