@@ -1,10 +1,11 @@
-//Variablen
+//      VARIABLEN
 let tournamentState = 33; //Magic number hier soll einfach ungleich 0/1/2/3/4, aber auch ein Integer sein, ist also wurst
 let tournamentMode;
 let numberOfSpielfeld;
 let listOfPlayers;
 
-//Funktionen definieren
+//      BROWSERSEITE INITIALISIEREN
+
 function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
     jQuery.getJSON("/tournamentstate", {tournamentState: newState, tournamentMode: newMode, numberOfSpielfeld: newSpielfeld},
         function(data) {
@@ -35,27 +36,13 @@ function switchDivs() {
     }
 }
 
-function addPlayer(){
-    syncTournamentState (4, 0, 0);
-    let newPlayer = {name, chars: []};
-    newPlayer.name =  prompt("Name des Spielers?");
-    for (let i = 0; i < numberOfSpielfeld; i++){
-        char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
-        newPlayer.chars.push(char);
-    }
-    jQuery.getJSON("/listofplayers",{newPlayer},
-        function(data){
-            listOfPlayers = data.listOfPlayers;
-            document.getElementById("enlp").innerHTML = listOfPlayers;
-        });
-}
-
-//Browserseite initialisieren
 document.addEventListener('DOMContentLoaded', syncTournamentState(4, 0, 0), false);
 document.addEventListener('DOMContentLoaded', switchDivs(), false);
-//Spielerliste in Lobby schreiben --> addPlayer leer schicken --> Aber fügt er dann einen leeren hinzu?
 
-//Header
+
+//      HEADER
+
+
 function showDivLobby() {
     document.getElementById("sectionlobby").style.display = "block";
     document.getElementById("sectionmatches").style.display = "none";
@@ -94,7 +81,45 @@ document.getElementById("btnmatches").addEventListener('click',showDivMatches,fa
 document.getElementById("btntree").addEventListener('click',showDivTree,false);
 document.getElementById("btnreset").addEventListener('click',showDivReset,false);
 
-//Reset-Seite
+
+//      LOBBY
+
+function addPlayer(){
+    //syncTournamentState (4, 0, 0);
+    numberOfSpielfeld = 2
+    let newPlayer = {name, chars: []};
+    newPlayer.name =  prompt("Name des Spielers?");
+    for (let i = 0; i < numberOfSpielfeld; i++){
+        char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
+        newPlayer.chars.push(char);
+    }
+    jQuery.getJSON("/listofplayers",newPlayer,
+        function(data){
+            listOfPlayers = data.listOfPlayers;
+            let newTable = document.createElement("rostertable"); 
+            for (let i = 0; i < listOfPlayers.length; i++) {
+            let row = table.insertRow(-1);
+            let nameCell = row.insertCell(-1);
+            nameCell.appendChild(document.createTextNode(listOfPlayers.names[i]));
+                for (let j = 0; j < numberOfSpielfeld.length; j++) {
+                    let charCell = row.insertCell(-1);
+                    charCell.appendChild(document.createTextNode(listOfPlayers.chars[i][j]));
+                }
+            }
+            let currentDiv = document.getElementById("placementdummy"); 
+            document.body.insertBefore(newTable, currentDiv);
+            //alte Liste muss dann noch gelöscht werden    
+        });
+}
+
+
+//Button Neuer Spieler
+document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
+
+
+//      RESET
+
+
 function setToZero() {
     syncTournamentState(0, 0, 0);
     switchDivs();
@@ -136,8 +161,3 @@ document.getElementById("buttonsetto0").addEventListener('click',setToZero,false
 document.getElementById("buttonsetto1").addEventListener('click',setToOne,false);
 document.getElementById("buttonsetto2").addEventListener('click',setToTwo,false);
 document.getElementById("buttonkickplayer").addEventListener('click',kickPlayer,false);
-
-//Lobby 
-
-//Button Neuer Spieler
-document.getElementById("btnaddpl").addEventListener('click',addPlayer,false);
