@@ -30,18 +30,37 @@ function switchDivs() {
     }
 }
 
+function playerListToLobby(){
+    /*let newTable = document.createElement("rostertable"); 
+    for (let i = 0; i < listOfPlayers.length; i++) {
+    let row = table.insertRow(-1);
+    let nameCell = row.insertCell(-1);
+    nameCell.appendChild(document.createTextNode(listOfPlayers.names[i]));
+        for (let j = 0; j < numberOfSpielfeld.length; j++) {
+            let charCell = row.insertCell(-1);
+            charCell.appendChild(document.createTextNode(listOfPlayers.chars[i][j]));
+        }
+    }
+    let currentDiv = document.getElementById("placementdummy"); 
+    document.body.insertBefore(newTable, currentDiv);*/
+    alert(listOfPlayers); //Testing only
+    //alte Liste muss dann noch gelöscht werden 
+}
+
 function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
     jQuery.getJSON("/tournamentstate", {tournamentState: newState, tournamentMode: newMode, numberOfSpielfeld: newSpielfeld},
         function(data) {
             tournamentState = data.tournamentState;
             tournamentMode = data.tournamentMode;
             numberOfSpielfeld = data.numberOfSpielfeld;
+            listOfPlayers = data.listOfPlayers;
+            playerListToLobby();
             switchDivs();
         });
 }
 
 document.addEventListener('DOMContentLoaded', syncTournamentState(4, 0, 0), false);
-//document.addEventListener('DOMContentLoaded', switchDivs(), false);                   //commented away as it triggered before callback was returned
+//document.addEventListener('DOMContentLoaded', switchDivs(), false);            //commented away as it triggered before callback was returned
 
 
 //      HEADER
@@ -90,29 +109,16 @@ document.getElementById("btnreset").addEventListener('click',showDivReset,false)
 
 function addPlayer(){
     syncTournamentState (4, 0, 0);
-    //numberOfSpielfeld = 2             //nur als Dummy
     let newPlayer = {name, chars: []};
     newPlayer.name =  prompt("Name des Spielers?");
     for (let i = 0; i < numberOfSpielfeld; i++){
         char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
         newPlayer.chars.push(char);
     }
-    jQuery.getJSON("/listofplayers",newPlayer,
+    jQuery.getJSON("/listofplayers", newPlayer,
         function(data){
             listOfPlayers = data.listOfPlayers;
-            let newTable = document.createElement("rostertable"); 
-            for (let i = 0; i < listOfPlayers.length; i++) {
-            let row = table.insertRow(-1);
-            let nameCell = row.insertCell(-1);
-            nameCell.appendChild(document.createTextNode(listOfPlayers.names[i]));
-                for (let j = 0; j < numberOfSpielfeld.length; j++) {
-                    let charCell = row.insertCell(-1);
-                    charCell.appendChild(document.createTextNode(listOfPlayers.chars[i][j]));
-                }
-            }
-            let currentDiv = document.getElementById("placementdummy"); 
-            document.body.insertBefore(newTable, currentDiv);
-            //alte Liste muss dann noch gelöscht werden    
+            syncTournamentState(4, 0, 0);
         });
 }
 
