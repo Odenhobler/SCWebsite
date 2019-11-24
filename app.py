@@ -79,7 +79,8 @@ def add_player():
     if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
         listOfPlayers.names.append(plname)
         listOfPlayers.chars.append(chars)  #This should ultimately be a 2-dimensional array.
-    return jsonify(listOfPlayers=listOfPlayers) #Put into one object
+    return jsonify(listOfPlayers=listOfPlayers.names,
+        listOfChars=listOfPlayers.chars) #Put into one object
 
 @app.route('/kickplayer')
 def kik_player():
