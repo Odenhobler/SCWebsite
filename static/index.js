@@ -6,15 +6,6 @@ let listOfPlayers;
 
 //      BROWSERSEITE INITIALISIEREN
 
-function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
-    jQuery.getJSON("/tournamentstate", {tournamentState: newState, tournamentMode: newMode, numberOfSpielfeld: newSpielfeld},
-        function(data) {
-            tournamentState = data.tournamentState;
-            tournamentMode = data.tournamentMode;
-            numberOfSpielfeld = data.numberOfSpielfeld;
-        });
-}
-
 function switchDivs() {
     if (tournamentState == 0) {
         document.getElementById("sectionlobby").style.display = "none";
@@ -39,8 +30,18 @@ function switchDivs() {
     }
 }
 
+function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
+    jQuery.getJSON("/tournamentstate", {tournamentState: newState, tournamentMode: newMode, numberOfSpielfeld: newSpielfeld},
+        function(data) {
+            tournamentState = data.tournamentState;
+            tournamentMode = data.tournamentMode;
+            numberOfSpielfeld = data.numberOfSpielfeld;
+            switchDivs();
+        });
+}
+
 document.addEventListener('DOMContentLoaded', syncTournamentState(4, 0, 0), false);
-document.addEventListener('DOMContentLoaded', switchDivs(), false);
+//document.addEventListener('DOMContentLoaded', switchDivs(), false);                   //commented away as it triggered before callback was returned
 
 
 //      HEADER
@@ -88,7 +89,7 @@ document.getElementById("btnreset").addEventListener('click',showDivReset,false)
 //      LOBBY
 
 function addPlayer(){
-    //syncTournamentState (4, 0, 0);
+    syncTournamentState (4, 0, 0);
     //numberOfSpielfeld = 2             //nur als Dummy
     let newPlayer = {name, chars: []};
     newPlayer.name =  prompt("Name des Spielers?");
