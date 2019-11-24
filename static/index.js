@@ -44,8 +44,8 @@ function playerListToLobby(){
     }
     let currentDiv = document.getElementById("placementdummy"); 
     document.body.insertBefore(newTable, currentDiv);*/
-    alert(listOfChars);
-    document.getElementById("placementdummy").innerHTML = listOfPlayers + listOfChars; //Testing only
+    document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
+    document.getElementById("placementdummy2").innerHTML = listOfChars; //Testing only
     
     //alte Liste muss dann noch gelöscht werden 
 }
