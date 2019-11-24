@@ -18,18 +18,21 @@ function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4
 function switchDivs() {
     if (tournamentState == 0) {
         document.getElementById("sectionlobby").style.display = "none";
+        document.getElementById("btnaddp").style.display = "none";
         document.getElementById("sectionmatches").style.display = "none";
         document.getElementById("sectiontree").style.display = "none";
         document.getElementById("sectionreset").style.display = "none";
     }
     if (tournamentState == 1) {
         document.getElementById("sectionlobby").style.display = "block";
+        document.getElementById("btnaddp").style.display = "block";
         document.getElementById("sectionmatches").style.display = "none";
         document.getElementById("sectiontree").style.display = "none";
         document.getElementById("sectionreset").style.display = "none";
     }
     if (tournamentState == 2) {
         document.getElementById("sectionlobby").style.display = "none";
+        document.getElementById("btnaddp").style.display = "none";
         document.getElementById("sectionmatches").style.display = "block";
         document.getElementById("sectiontree").style.display = "none";
         document.getElementById("sectionreset").style.display = "none";
@@ -150,6 +153,7 @@ function testAlert() {
     function (data){
         testAlert = data.testAlert;
         alert(testAlert);
+        alert(tournamentState);
     });
 }
 
