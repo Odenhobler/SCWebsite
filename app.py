@@ -75,12 +75,16 @@ def add_player():
     global listOfPlayers
     plname=request.args.get('name', type=str)
     #TODO Warn if player name already exists
-    chars=request.args.get('chars', type=int)   #int[], dim=cpp. Maybe add a check if the dimension is correct.
+    chars=request.args.get('chars')   #int[], dim=cpp. Maybe add a check if the dimension is correct.
     if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
         listOfPlayers.names.append(plname)
-        listOfPlayers.chars.append(chars)  #This should ultimately be a 2-dimensional array.
-    return jsonify(listOfPlayers=listOfPlayers.names,
-        listOfChars=listOfPlayers.chars) #Put into one object
+        # listOfPlayers.chars.append(chars)
+        listOfPlayers.chars=chars
+    return jsonify(
+        listOfPlayers=listOfPlayers.names,
+        # listOfChars=listOfPlayers.chars
+        listOfChars="CHAR1"
+    )
 
 @app.route('/kickplayer')
 def kik_player():
