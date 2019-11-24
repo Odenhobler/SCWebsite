@@ -26,7 +26,7 @@ def index():
 @app.route('/tournamentstate')
 def get_state():
     ask = request.args.get('tournamentState', type=int)
-    return jsonify(testAlert=ask)
+    return jsonify(tournamentState=ask)
     if(ask==0):
         #To set state 0, no further input is required. Everything is set to default values.
         mode = 1
