@@ -54,7 +54,7 @@ function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4
             tournamentMode = data.tournamentMode;
             numberOfSpielfeld = data.numberOfSpielfeld;
             listOfPlayers = data.listOfPlayers;
-            playerListToLobby();
+            //playerListToLobby();
             switchDivs();
         });
 }
@@ -109,13 +109,14 @@ document.getElementById("btnreset").addEventListener('click',showDivReset,false)
 
 function addPlayer(){
     syncTournamentState (4, 0, 0);
-    let newPlayer = {name, chars: []};
-    newPlayer.name =  prompt("Name des Spielers?");
+    let newPlayer;
+    let newChars = [];
+    newPlayer =  prompt("Name des Spielers?");
     for (let i = 0; i < numberOfSpielfeld; i++){
         char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
-        newPlayer.chars.push(char);
+        newChars.push(char);
     }
-    jQuery.getJSON("/listofplayers", newPlayer,
+    jQuery.getJSON("/listofplayers", {name: newPlayer, chars: newChars},
         function(data){
             listOfPlayers = data.listOfPlayers;
             syncTournamentState(4, 0, 0);
