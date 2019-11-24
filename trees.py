@@ -27,6 +27,17 @@ class Match:
     def info(self):
         print (self.id, self.rd, self.p1, self.p2, self.parent, self.sparent, self.win, self.lose, self.res)
 
+#Funcion to enter a score (sp1:sp2) to the match named <id>
+def addscore(id, sp1, sp2):
+    cur=matches[id]
+    cur.score(sp1, sp2)
+    if(cur.parent>=0):  #No "else" because otherwise this should be the final match.
+        if(matches[cur.parent].p1 is None):
+            matches[cur.parent].p1 = cur.win
+        else:
+            matches[cur.parent].p2 = cur.win
+
+#Create Single-elimination scheme
 def singletree():
     # if state!=1: print some kind of error message
     #Create final match
@@ -48,9 +59,8 @@ def singletree():
         else:
             cur.parent=-1
     matches.reverse()
-    # for i in range(nMatch): matches[i].info()
     #At this point, a list of all matches, rounds and links to their parents exists.
-    #Next: Add the players
+    #Next step: Add the players
     #TODO Randomize the seeding list
     nByes = 2**matches[-1].rd-len(plist)
     for i in range(nByes): plist.append("bye")
@@ -62,6 +72,7 @@ def singletree():
             cur.p1 = matches[cur.parent].p2
         h = 2**(nRounds-cur.rd+1)-1
         cur.p2 = h-cur.p1
+    #Assign players to 1st round matches; "None" to all other matches (essential for addscore() function!)
     for i in range(nMatch):
         cur = matches[i]
         if cur.rd==1:
@@ -70,42 +81,42 @@ def singletree():
         else:
             cur.p1 = None
             cur.p2 = None
-
-    # matches[1].score(3,0)
-    # matches[matches[1].parent].p1 = matches[1].win
-    
+    #Automatically convert byes into 3-0 wins
+    for i in range(nMatch):
+        cur = matches[i]
+        if cur.p1=="bye": addscore(i, 0, 3)
+        if cur.p2=="bye": addscore(i, 3, 0)
 
     state = 2
     return matches[-1].id, matches[-1].rd
 
-def addscore(id, sp1, sp2):
-    cur=matches[id-1]
-    if cur.id != id: return("ERROR: wrong id")
-    cur.score(sp1, sp2)
-    if(cur.parent>=0):  #No "else" because otherwise this should be the final match.
-        if(matches[cur.parent].p1 is None):
-        # if(id%2==1): #NOTE Assuming that every match has one even predecessor (child) and one odd one. This is not necessarily true!
-            matches[cur.parent].p1 = cur.win
-        else:
-            matches[cur.parent].p2 = cur.win
         
-print (singletree())
-addscore(1, 3, 0)
-addscore(2, 3, 0)
-addscore(3, 3, 0)
-addscore(4, 3, 0)
-addscore(5, 3, 0)
-addscore(6, 3, 0)
-addscore(7, 1, 3)
-addscore(8, 3, 0)
+# print (singletree())
+# for i in range(15): matches[i].info()
+# addscore(1, 3, 0)
+# for i in range(7): matches[i].info()
+# addscore(2, 3, 0)
+# addscore(3, 3, 0)
+# addscore(4, 3, 0)
+# addscore(5, 3, 0)
+# addscore(6, 3, 0)
+# addscore(7, 1, 3)
+# addscore(8, 3, 0)
 
-addscore(9, 3, 2)
-addscore(10, 1, 3)
-addscore(11, 1, 0)
-addscore(12, 4, 42)
+# addscore(9, 3, 2)
+# addscore(10, 1, 3)
+# addscore(11, 1, 0)
+# addscore(12, 4, 42)
 
-addscore(13, 3, 1)
-addscore(14, 1, 3)
+# addscore(13, 3, 1)
+# addscore(14, 1, 3)
 
-addscore(15, 2, 3)
-for i in range(15): matches[i].info()
+# addscore(15, 2, 3)
+# for i in range(15): matches[i].info()
+
+#Double-elimination scheme
+# def doubletree():
+
+a = [[1,2,3]]
+a.append([3,4,5])
+print(a)
