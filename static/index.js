@@ -3,6 +3,7 @@ let tournamentState = 33; //Magic number hier soll einfach ungleich 0/1/2/3/4, a
 let tournamentMode;
 let numberOfSpielfeld;
 let listOfPlayers;
+let listOfChars;
 
 //      BROWSERSEITE INITIALISIEREN
 
@@ -43,7 +44,9 @@ function playerListToLobby(){
     }
     let currentDiv = document.getElementById("placementdummy"); 
     document.body.insertBefore(newTable, currentDiv);*/
-    alert(listOfPlayers); //Testing only
+    alert(listOfChars);
+    document.getElementById("placementdummy").innerHTML = listOfPlayers + listOfChars; //Testing only
+    
     //alte Liste muss dann noch gelöscht werden 
 }
 
@@ -54,6 +57,7 @@ function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4
             tournamentMode = data.tournamentMode;
             numberOfSpielfeld = data.numberOfSpielfeld;
             listOfPlayers = data.listOfPlayers;
+            listOfChars = data.listOfChars;
             playerListToLobby();
             switchDivs();
         });
@@ -88,7 +92,7 @@ function showDivTree() {
 }
 
 function showDivReset() {
-    if (prompt("Passwort") == "docboker") {
+    if (prompt("Passwort") == "d") {
         document.getElementById("sectionlobby").style.display = "none";
         document.getElementById("sectionmatches").style.display = "none";
         document.getElementById("sectiontree").style.display = "none";
@@ -117,8 +121,7 @@ function addPlayer(){
         newChars.push(char);
     }
     jQuery.getJSON("/listofplayers", {name: newPlayer, chars: newChars},
-        function(data){
-            listOfPlayers = data.listOfPlayers;
+        function(){
             syncTournamentState(4, 0, 0);
         });
 }
