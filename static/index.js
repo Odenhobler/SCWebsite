@@ -89,7 +89,7 @@ document.getElementById("btnreset").addEventListener('click',showDivReset,false)
 
 function addPlayer(){
     //syncTournamentState (4, 0, 0);
-    numberOfSpielfeld = 2
+    //numberOfSpielfeld = 2             //nur als Dummy
     let newPlayer = {name, chars: []};
     newPlayer.name =  prompt("Name des Spielers?");
     for (let i = 0; i < numberOfSpielfeld; i++){
