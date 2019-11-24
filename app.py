@@ -25,8 +25,9 @@ def index():
 # To be called with argument tournamentState=0, 1, 2 or else to set state accordingly or to ask for current state.
 @app.route('/tournamentstate')
 def get_state():
+    global state, mode, cpp, listOfPlayers
     ask = request.args.get('tournamentState', type=int)
-    return jsonify(tournamentState=ask)
+    # if(ask==4): return jsonify(tournamentState=ask)
     if(ask==0):
         #To set state 0, no further input is required. Everything is set to default values.
         mode = 1
@@ -61,11 +62,11 @@ def get_state():
             numberOfSpielfeld=cpp
         )
     else:
-
+        # state=42
         return jsonify(
             tournamentState=state,
-            tournamentMode=mode,
-            numberOfSpielfeld=cpp
+            # tournamentMode=mode,
+            # numberOfSpielfeld=cpp,
         )
 
 # Add player
