@@ -125,8 +125,12 @@ function addPlayer(){
       contentType: "application/json;charset=utf-8",
       url: "/listofplayers",
       traditional: "true",
-      data: JSON.stringify(newChars),
-      dataType: "json"
+      data: JSON.stringify({name: newPlayer, chars: newChars}),
+      dataType: "json",
+      success: function(data) {
+        listOfPlayers = data.listOfPlayers;
+        listOfChars = data.listOfChars;
+        playerListToLobby(); }
       });
 
     /*jQuery.getJSON("/listofplayers", {name: newPlayer, chars: newChars[0], chars: "Kino", chars: "Dammie"},

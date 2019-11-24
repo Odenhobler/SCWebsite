@@ -70,26 +70,37 @@ def get_state():
         )
 
 # Add player
-@app.route('/listofplayers')
+@app.route('/listofplayers', methods=['GET', 'POST'])
 def add_player():
     global listOfPlayers
-    plname=request.args.get('name', type=str)
-    print("Hi. My name is " + plname)
+    # plname=request.args.get('name', type=str)
+    # print("Hi. My name is " + plname)
     #TODO Warn if player name already exists
-    chars=request.get_json()
+    if request.method == 'POST':
+        CONTENT = request.get_json()
+        print (CONTENT)
+        '''
+            Aktuelle Situation: CONTENT wird korrekt übermittelt (vgl. Konsole, während Flask läuft). Wie kann ich dieses JSON-Objekt in ein Python-Objekt umwandeln, das verarbeitet und wieder an Javascript zurückgesendet werden kann (vgl. return)?
+        '''
+    # return '', 200
+	# listOfPlayers.names = CONTENT.name  #Append
+    # listOfPlayers.chars = CONTENT.chars #Append
     # print(is_json(chars))
     # chars=request.args.get('chars', type=str)   #int[], dim=cpp. Maybe add a check if the dimension is correct.
-    print("Hi. My character is ")
-    print(chars[0])
-    if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
-        listOfPlayers.names.append(plname)
-        # listOfPlayers.chars.append(chars)
-        listOfPlayers.chars=chars1
+    # print("Hi. My character is ")
+    # print(chars[0])
+    # if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
+    #     listOfPlayers.names.append(plname)
+    #     # listOfPlayers.chars.append(chars)
+    #     listOfPlayers.chars=chars1
     return jsonify(
-        listOfPlayers=listOfPlayers.names,
+    #     listOfPlayers=CONTENT.name,
+    #     listOfChars=CONTENT.chars
+        # listOfPlayers=listOfPlayers.names,
+        listOfPlayers="PLAYER1",
         # listOfChars=listOfPlayers.chars
         listOfChars="CHAR1"
-    )
+    ), 223
 #    if request.method == 'POST':
 # 	   names = request.get_json()
 # 		   for name in names:
