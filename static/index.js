@@ -78,6 +78,9 @@ function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4
             listOfChars = data.listOfChars;
             playerListToLobby();
             switchDivs();
+            if (tournamentState == 2) {
+                auto_refresh()
+            }
         });
 }
 
@@ -156,6 +159,25 @@ function addPlayer(){
 //Button Neuer Spieler
 document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
 
+//      MATCHES
+
+//Refresh function (gets included in god function)
+let auto_refresh = setInterval(
+    function () {
+        $.ajax({
+            //type: "GET",
+            url: "/listofmatches",
+            success: function(data) {
+              listOfMatches = data.listOfMatches
+              printListOfMatches(); }
+            });
+        }, 5000
+);
+
+//write matches to match section
+function printListOfMatches() {
+    document.getElementById("livelist").innerHTML = listOfMatches;
+}
 
 //      RESET
 
