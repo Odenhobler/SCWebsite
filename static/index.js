@@ -31,21 +31,38 @@ function switchDivs() {
     }
 }
 
-function playerListToLobby(){
-    let newTable = document.createElement("rostertable"); 
-    for (let i = 0; i < listOfPlayers.length; i++) {
-        let row = table.insertRow(-1);
-        let nameCell = row.insertCell(-1);
-        nameCell.appendChild(document.createTextNode(listOfPlayers[i]));
-        for (let j = 0; j < numberOfSpielfeld.length; j++) {
-            let charCell = row.insertCell(-1);
-            charCell.appendChild(document.createTextNode(listOfChars[i][j]));
-            }
+function makeTableHTML(myArray) {
+    var result = "<table border=1>";
+    for(var i=0; i<myArray.length; i++) {
+        result += "<tr>";
+        for(var j=0; j<myArray[i].length; j++){
+            result += "<td>"+myArray[i][j]+"</td>";
+        }
+        result += "</tr>";
     }
-    let currentDiv = document.getElementById("placementdummy"); 
-    document.body.insertBefore(newTable, currentDiv);
-    //document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
-    //document.getElementById("placementdummy2").innerHTML = listOfChars; //Testing only
+    result += "</table>";
+
+    return result;
+}
+
+function playerListToLobby(){
+    let newTable = document.getElementById("rt");
+    newTable.innerHTML = makeTableHTML(listOfPlayers);
+    // document.getElementById("rt").innerHTML = listOfPlayers;
+    // for (let i = 0; i < listOfPlayers.length; i++) {
+        // alert(i)
+    //     let row = newTable.insertRow(-1);
+    //     let nameCell = row.insertCell(-1);
+    //     nameCell.appendChild(document.createTextNode("hi"));
+    // //     for (let j = 0; j < numberOfSpielfeld.length; j++) {
+    //         let charCell = row.insertCell(-1);
+    //         charCell.appendChild(document.createTextNode(listOfChars[i][j]));
+    //         }
+    // }
+    // let currentDiv = document.getElementById("placementdummy"); 
+    // document.body.insertBefore(newTable, currentDiv);
+    document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
+    // document.getElementById("rt").innerHTML = listOfChars; //Testing only
     
     //alte Liste muss dann noch gelöscht werden 
 }
