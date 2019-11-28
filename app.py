@@ -70,42 +70,27 @@ def get_state():
         )
 
 # Add player
-@app.route('/listofplayers', methods=['GET', 'POST'])
+@app.route('/listofplayers', methods=['POST'])
 def add_player():
     global listOfPlayers
-    # plname=request.args.get('name', type=str)
-    # print("Hi. My name is " + plname)
-    #TODO Warn if player name already exists
-    if request.method == 'POST':
-        CONTENT = request.get_json()
-        print (CONTENT)
-        '''
-            Aktuelle Situation: CONTENT wird korrekt übermittelt (vgl. Konsole, während Flask läuft). Wie kann ich dieses JSON-Objekt in ein Python-Objekt umwandeln, das verarbeitet und wieder an Javascript zurückgesendet werden kann (vgl. return)?
-        '''
-    # return '', 200
-	# listOfPlayers.names = CONTENT.name  #Append
-    # listOfPlayers.chars = CONTENT.chars #Append
-    # print(is_json(chars))
-    # chars=request.args.get('chars', type=str)   #int[], dim=cpp. Maybe add a check if the dimension is correct.
-    # print("Hi. My character is ")
-    # print(chars[0])
-    # if len(plname) > 0: #Function can also be called without arguments to simply return the current list of players
-    #     listOfPlayers.names.append(plname)
-    #     # listOfPlayers.chars.append(chars)
-    #     listOfPlayers.chars=chars1
+    # if request.method == 'POST':  #POST is the only method anyway
+    inp = request.get_json()
+    #Check if player name exists; reject entry if it does
+    if inp['name'] in listOfPlayers.names:
+        print("Name schon vergeben: " + inp['name'])
+        return jsonify(alert = "Name " + inp['name'] + " ist schon vergeben!"), 451
+    #Check if number of characters is correct; add player and chars to list
+    if len(inp['chars']) == cpp:
+        listOfPlayers.names.append(inp['name'])
+        listOfPlayers.chars.append(inp['chars'])
+    else:
+        print ("Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
+        return jsonify(alert = "Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
+    # else: return jsonify(alert = "Need POST method"), 400
     return jsonify(
-    #     listOfPlayers=CONTENT.name,
-    #     listOfChars=CONTENT.chars
-        # listOfPlayers=listOfPlayers.names,
-        listOfPlayers="PLAYER1",
-        # listOfChars=listOfPlayers.chars
-        listOfChars="CHAR1"
-    ), 223
-#    if request.method == 'POST':
-# 	   names = request.get_json()
-# 		   for name in names:
-# 			print name			
-# 	return '', 200
+        listOfPlayers=listOfPlayers.names,
+        listOfChars=listOfPlayers.chars
+    ), 200
 
 @app.route('/kickplayer')
 def kik_player():
