@@ -116,9 +116,27 @@ function addPlayer(){
     let newPlayer;
     let newChars = [];
     newPlayer =  prompt("Name des Spielers?");
-    for (let i = 0; i < numberOfSpielfeld; i++){
-        char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
-        newChars.push(char);
+    for (let i = 0; i < numberOfSpielfeld; i++) {
+        $("#selectfighter").dialog("open");
+        $( "#dialog" ).dialog({ autoOpen: false });
+        $("#selectfighter").dialog({
+            buttons: {
+              '2B': function() {
+                 let char = 0;
+                 $(this).dialog('close');
+              },
+              //Alle anderen Charaktere
+              'Cancel': function() {
+                  //noch irgendeinen Break für den AddPlayer hier einbauen
+                 $(this).dialog('close');
+              }
+            }
+          });
+    }
+    /* //Das war die alte Variante mit Ints, die eingegeben werden
+        for (let i = 0; i < numberOfSpielfeld; i++){
+            char = parseInt(prompt("Charakter " + (i+1) + "?"), 10);
+            newChars.push(char);*/
     }
     $.ajax({
       type: "POST",
@@ -140,6 +158,18 @@ function addPlayer(){
     alert("Received " + listOfChars);*/
 }
 
+$("#mydialog").dialog({
+    buttons: {
+      '2B': function() {
+         let char = 0;
+         $(this).dialog('close');
+      },
+      'Cancel': function() {
+          //noch irgendeinen Break für den AddPlayer hier einbauen
+         $(this).dialog('close');
+      }
+    }
+  });
 
 //Button Neuer Spieler
 document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
