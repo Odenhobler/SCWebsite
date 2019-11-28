@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 # from .apptest import anotherbutton
+from trees import *
 app = Flask (__name__, static_url_path='/static')
 
 state = 0 #0 before initialization, 1 after, 2 for running tournament
@@ -111,6 +112,12 @@ def test_button():
         testAlert="mess"
     )
     
+@app.route('/listofmatches')
+def dummytree():
+    return jsonify(listOfMatches = ["Match 1", "Match 2", "Muuuuria"])
+    # return jsonify(listOfMatches = dummymatches(7))
+
+    # return '', 200
 
 if __name__ == '__main__':
 	app.run (host='0.0.0.0')
