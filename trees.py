@@ -1,5 +1,4 @@
 #Local test for tournament draws
-state = 0
 matches = []
 plist = ["A","B","C","D","E","F","G","H", "I"]
 
@@ -87,7 +86,6 @@ def singletree():
         if cur.p1=="bye": addscore(i, 0, 3)
         if cur.p2=="bye": addscore(i, 3, 0)
 
-    state = 2
     return matches[-1].id, matches[-1].rd
 
         
@@ -116,3 +114,15 @@ def singletree():
 
 #Double-elimination scheme
 # def doubletree():
+
+def dummymatches(i):
+    global plist
+    plist = []
+    global matches
+    for x in range(i):
+        plist.append("Spieler{}".format(x+1))
+    singletree()
+    return matches
+
+# dummymatches(5)
+# matches[0].info()
