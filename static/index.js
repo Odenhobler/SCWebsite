@@ -32,20 +32,20 @@ function switchDivs() {
 }
 
 function playerListToLobby(){
-    /*let newTable = document.createElement("rostertable"); 
+    let newTable = document.createElement("rostertable"); 
     for (let i = 0; i < listOfPlayers.length; i++) {
-    let row = table.insertRow(-1);
-    let nameCell = row.insertCell(-1);
-    nameCell.appendChild(document.createTextNode(listOfPlayers.names[i]));
+        let row = table.insertRow(-1);
+        let nameCell = row.insertCell(-1);
+        nameCell.appendChild(document.createTextNode(listOfPlayers[i]));
         for (let j = 0; j < numberOfSpielfeld.length; j++) {
             let charCell = row.insertCell(-1);
-            charCell.appendChild(document.createTextNode(listOfPlayers.chars[i][j]));
-        }
+            charCell.appendChild(document.createTextNode(listOfChars[i][j]));
+            }
     }
     let currentDiv = document.getElementById("placementdummy"); 
-    document.body.insertBefore(newTable, currentDiv);*/
-    document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
-    document.getElementById("placementdummy2").innerHTML = listOfChars; //Testing only
+    document.body.insertBefore(newTable, currentDiv);
+    //document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
+    //document.getElementById("placementdummy2").innerHTML = listOfChars; //Testing only
     
     //alte Liste muss dann noch gelöscht werden 
 }
@@ -132,12 +132,6 @@ function addPlayer(){
         listOfChars = data.listOfChars;
         playerListToLobby(); }
       });
-
-    /*jQuery.getJSON("/listofplayers", {name: newPlayer, chars: newChars[0], chars: "Kino", chars: "Dammie"},
-        function(){
-            syncTournamentState(4, 0, 0);
-        });
-    alert("Received " + listOfChars);*/
 }
 
 
