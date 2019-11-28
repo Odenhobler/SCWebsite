@@ -87,8 +87,9 @@ def add_player():
         print ("Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
         return jsonify(alert = "Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
     # else: return jsonify(alert = "Need POST method"), 400
-    print (listOfPlayers.chars)
+    print ([listOfPlayers.names,listOfPlayers.chars])
     return jsonify(
+        # listOfPlayers=[listOfPlayers.names,listOfPlayers.chars]
         listOfPlayers=listOfPlayers.names,
         listOfChars=listOfPlayers.chars
     ), 200

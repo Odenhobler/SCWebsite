@@ -31,12 +31,14 @@ function switchDivs() {
     }
 }
 
-function makeTableHTML(myArray) {
+function makeTableHTML(parray, carray) {
     var result = "<table border=1>";
-    for(var i=0; i<myArray.length; i++) {
+    for(var i=0; i<parray.length; i++) {
         result += "<tr>";
-        for(var j=0; j<myArray[i].length; j++){
-            result += "<td>"+myArray[i][j]+"</td>";
+        // result += "<td>" + myArray[0].length + "</td>";
+        result += "<td>"+parray[i]+"</td>";
+        for(var j=0; j<numberOfSpielfeld; j++){
+            result += "<td>"+carray[i][j]+"</td>";
         }
         result += "</tr>";
     }
@@ -47,7 +49,7 @@ function makeTableHTML(myArray) {
 
 function playerListToLobby(){
     let newTable = document.getElementById("rt");
-    newTable.innerHTML = makeTableHTML(listOfPlayers);
+    newTable.innerHTML = makeTableHTML(listOfPlayers, listOfChars);
     // document.getElementById("rt").innerHTML = listOfPlayers;
     // for (let i = 0; i < listOfPlayers.length; i++) {
         // alert(i)
