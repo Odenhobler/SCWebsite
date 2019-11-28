@@ -48,8 +48,7 @@ function makeTableHTML(parray, carray) {
 }
 
 function playerListToLobby(){
-    let newTable = document.getElementById("rt");
-    newTable.innerHTML = makeTableHTML(listOfPlayers, listOfChars);
+    document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars);
     // document.getElementById("rt").innerHTML = listOfPlayers;
     // for (let i = 0; i < listOfPlayers.length; i++) {
         // alert(i)
@@ -63,7 +62,7 @@ function playerListToLobby(){
     // }
     // let currentDiv = document.getElementById("placementdummy"); 
     // document.body.insertBefore(newTable, currentDiv);
-    document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
+    // document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
     // document.getElementById("rt").innerHTML = listOfChars; //Testing only
     
     //alte Liste muss dann noch gelöscht werden 
