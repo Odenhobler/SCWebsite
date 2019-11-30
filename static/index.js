@@ -68,7 +68,7 @@ function playerListToLobby(){
     //alte Liste muss dann noch gelöscht werden 
 }
 
-function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
+function godFunction(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
     jQuery.getJSON("/tournamentstate", {tournamentState: newState, tournamentMode: newMode, numberOfSpielfeld: newSpielfeld},
         function(data) {
             tournamentState = data.tournamentState;
@@ -77,14 +77,15 @@ function syncTournamentState(newState, newMode, newSpielfeld) {    //Bei state=4
             listOfPlayers = data.listOfPlayers;
             listOfChars = data.listOfChars;
             playerListToLobby();
-            switchDivs();
+            //switchDivs();
             if (tournamentState == 2) {
-                auto_refresh()
+                auto_refresh();
             }
+            setTimeout(godFunction, 4999);
         });
 }
 
-document.addEventListener('DOMContentLoaded', syncTournamentState(4, 0, 0), false);
+document.addEventListener('DOMContentLoaded', godFunction(4, 0, 0), false);
 //document.addEventListener('DOMContentLoaded', switchDivs(), false);            //commented away as it triggered before callback was returned
 
 
@@ -133,7 +134,7 @@ document.getElementById("btnreset").addEventListener('click',showDivReset,false)
 //      LOBBY
 
 function addPlayer(){
-    syncTournamentState (4, 0, 0);
+    godFunction (4, 0, 0);
     let newPlayer;
     let newChars = [];
     newPlayer =  prompt("Name des Spielers?");
@@ -162,17 +163,15 @@ document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
 //      MATCHES
 
 //Refresh function (gets included in god function)
-let auto_refresh = setInterval(
-    function () {
-        $.ajax({
-            //type: "GET",
-            url: "/listofmatches",
-            success: function(data) {
-              listOfMatches = data.listOfMatches
-              printListOfMatches(); }
-            });
-        }, 5000
-);
+function auto_refresh() {
+    $.ajax({
+        url: "/listofmatches",
+        success: function(data) {
+          listOfMatches = data.listOfMatches
+          printListOfMatches(); 
+        }
+        });
+    };
 
 //write matches to match section
 function printListOfMatches() {
@@ -183,19 +182,19 @@ function printListOfMatches() {
 
 
 function setToZero() {
-    syncTournamentState(0, 0, 0);
+    godFunction(0, 0, 0);
     switchDivs();
 }
 
 function setToOne() {
     modus = parseInt(prompt("Welcher Modus? 0=Single, 1=Double, 2=Triple, 3=Liga, 4=Liga+Playoffs"), 10);
     spielfelds = parseInt(prompt("Wieviele Spielfelder?"), 10);
-    syncTournamentState (1, modus, spielfelds);
+    godFunction (1, modus, spielfelds);
     switchDivs();
 }
 
 function setToTwo() {
-    syncTournamentState(2, 0, 0);
+    godFunction(2, 0, 0);
     switchDivs();
 }
 
