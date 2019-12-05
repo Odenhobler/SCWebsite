@@ -130,6 +130,15 @@ document.getElementById("btnmatches").addEventListener('click',showDivMatches,fa
 document.getElementById("btntree").addEventListener('click',showDivTree,false);
 document.getElementById("btnreset").addEventListener('click',showDivReset,false);
 
+//Twitch frame
+var options = {
+    width: 220,
+    height: 178,
+    channel: "odenhobler"
+  };
+  var player = new Twitch.Player("twitchframe", options);
+  player.setVolume(0.5);
+
 
 //      LOBBY
 
