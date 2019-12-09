@@ -131,12 +131,12 @@ document.getElementById("btntree").addEventListener('click',showDivTree,false);
 document.getElementById("btnreset").addEventListener('click',showDivReset,false);
 
 //Twitch frame
-var options = {
+let options = {
     width: 220,
-    height: 178,
+    height: 180,
     channel: "odenhobler"
   };
-  var player = new Twitch.Player("twitchframe", options);
+  let player = new Twitch.Player("twitchframe", options);
   player.setVolume(0.5);
 
 
