@@ -104,7 +104,7 @@ def kik_player():
     del listOfPlayers.chars[pos]
     return jsonify(listOfPlayers=listOfPlayers)
 
-# Kurzer Test von Samuel
+# Frontend/backend testalert
 @app.route('/testbutton')
 def test_button():
     # return(jsonify(testAlert=anotherbutton(5)))

@@ -80,3 +80,15 @@ td {
   margin-top: 200px;
   font-size: 22px;
 }
+
+.buttoncontent {
+  margin-left: 5%;
+  font-size: 18px;
+  height: 40px;
+  text-align: center;
+  color: #0099ff;
+  border: 1px;
+  border-color: #0099ff;
+  border-style: solid;
+  background-color: whitesmoke;
+}
