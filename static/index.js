@@ -9,25 +9,25 @@ let listOfChars;
 
 function switchDivs() {
     if (tournamentState == 0) {
-        document.getElementById("sectionlobby").style.display = "none";
+        //document.getElementById("sectionlobby").style.display = "none";
         document.getElementById("btnaddp").style.display = "none";
-        document.getElementById("sectionmatches").style.display = "none";
-        document.getElementById("sectiontree").style.display = "none";
-        document.getElementById("sectionreset").style.display = "none";
+        //document.getElementById("sectionmatches").style.display = "none";
+        //document.getElementById("sectiontree").style.display = "none";
+        //document.getElementById("sectionreset").style.display = "none";
     }
     if (tournamentState == 1) {
-        document.getElementById("sectionlobby").style.display = "block";
+        //document.getElementById("sectionlobby").style.display = "block";
         document.getElementById("btnaddp").style.display = "block";
-        document.getElementById("sectionmatches").style.display = "none";
-        document.getElementById("sectiontree").style.display = "none";
-        document.getElementById("sectionreset").style.display = "none";
+        //document.getElementById("sectionmatches").style.display = "none";
+        //document.getElementById("sectiontree").style.display = "none";
+        //document.getElementById("sectionreset").style.display = "none";
     }
     if (tournamentState == 2) {
-        document.getElementById("sectionlobby").style.display = "none";
-        document.getElementById("btnaddp").style.display = "none";
-        document.getElementById("sectionmatches").style.display = "block";
-        document.getElementById("sectiontree").style.display = "none";
-        document.getElementById("sectionreset").style.display = "none";
+        //document.getElementById("sectionlobby").style.display = "none";
+        //document.getElementById("btnaddp").style.display = "none";
+        //document.getElementById("sectionmatches").style.display = "block";
+        //document.getElementById("sectiontree").style.display = "none";
+        //document.getElementById("sectionreset").style.display = "none";
     }
 }
 
@@ -153,11 +153,11 @@ function godFunction(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abf
             listOfPlayers = data.listOfPlayers;
             listOfChars = data.listOfChars;
             playerListToLobby();
-            //switchDivs();
+            switchDivs();
             if (tournamentState == 2) {
                 auto_refresh();
             }
-            setTimeout(godFunction, 4999);
+            //setTimeout(godFunction, 4999);
         });
 }
 
@@ -173,6 +173,7 @@ function showDivLobby() {
     document.getElementById("sectionmatches").style.display = "none";
     document.getElementById("sectiontree").style.display = "none";
     document.getElementById("sectionreset").style.display = "none";
+    godFunction(4, 0, 0);
 }
 
 function showDivMatches() {
@@ -180,6 +181,7 @@ function showDivMatches() {
     document.getElementById("sectionmatches").style.display = "block";
     document.getElementById("sectiontree").style.display = "none";
     document.getElementById("sectionreset").style.display = "none";
+    godFunction(4, 0, 0);
 }
 
 function showDivTree() {
@@ -187,6 +189,7 @@ function showDivTree() {
     document.getElementById("sectionmatches").style.display = "none";
     document.getElementById("sectiontree").style.display = "block";
     document.getElementById("sectionreset").style.display = "none";
+    godFunction(4, 0, 0);
 }
 
 function showDivReset() {
@@ -195,6 +198,7 @@ function showDivReset() {
         document.getElementById("sectionmatches").style.display = "none";
         document.getElementById("sectiontree").style.display = "none";
         document.getElementById("sectionreset").style.display = "block";
+        godFunction(4, 0, 0);
     } else {
         alert("Passwort falsch");
     }
@@ -285,7 +289,7 @@ function setToTwo() {
 
 function kickPlayer() {
     player = prompt("Wen?");
-    jQuery.getJSON("/kickplayer", {player},
+    jQuery.getJSON("/kickplayer", {name:player},
             
     )
 }
