@@ -125,23 +125,6 @@ function makeTableHTML(parray, carray) {
 
 function playerListToLobby(){
     document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars);
-    // document.getElementById("rt").innerHTML = listOfPlayers;
-    // for (let i = 0; i < listOfPlayers.length; i++) {
-        // alert(i)
-    //     let row = newTable.insertRow(-1);
-    //     let nameCell = row.insertCell(-1);
-    //     nameCell.appendChild(document.createTextNode("hi"));
-    // //     for (let j = 0; j < numberOfSpielfeld.length; j++) {
-    //         let charCell = row.insertCell(-1);
-    //         charCell.appendChild(document.createTextNode(listOfChars[i][j]));
-    //         }
-    // }
-    // let currentDiv = document.getElementById("placementdummy"); 
-    // document.body.insertBefore(newTable, currentDiv);
-    // document.getElementById("placementdummy").innerHTML = listOfPlayers; //Testing only
-    // document.getElementById("rt").innerHTML = listOfChars; //Testing only
-    
-    //alte Liste muss dann noch gelöscht werden 
 }
 
 function godFunction(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abfrage, data ist dann state, modus, spielfeld
@@ -155,9 +138,9 @@ function godFunction(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abf
             playerListToLobby();
             switchDivs();
             if (tournamentState == 2) {
-                auto_refresh();
+                refreshListOfMatches();
             }
-            //setTimeout(godFunction, 4999);
+            //setTimeout(godFunction, 4999);            //uncommented as it fucked up the whole thing
         });
 }
 
@@ -252,7 +235,7 @@ document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
 //      MATCHES
 
 //Refresh function (gets included in god function)
-function auto_refresh() {
+function refreshListOfMatches() {
     $.ajax({
         url: "/listofmatches",
         success: function(data) {
