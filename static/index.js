@@ -1,5 +1,5 @@
 //      VARIABLEN
-let tournamentState = 33; //Magic number hier soll einfach ungleich 0/1/2/3/4, aber auch ein Integer sein, ist also wurst
+let tournamentState; //Magic number hier soll einfach ungleich 0/1/2/3/4, aber auch ein Integer sein, ist also wurst
 let tournamentMode;
 let numberOfSpielfeld;
 let listOfPlayers;
@@ -10,7 +10,7 @@ let listOfChars;
 function switchDivs() {
     if (tournamentState == 0) {
         //document.getElementById("sectionlobby").style.display = "none";
-        document.getElementById("btnaddp").style.display = "none";
+        //document.getElementById("btnaddp").style.display = "none";
         //document.getElementById("sectionmatches").style.display = "none";
         //document.getElementById("sectiontree").style.display = "none";
         //document.getElementById("sectionreset").style.display = "none";
@@ -24,7 +24,7 @@ function switchDivs() {
     }
     if (tournamentState == 2) {
         //document.getElementById("sectionlobby").style.display = "none";
-        //document.getElementById("btnaddp").style.display = "none";
+        document.getElementById("btnaddp").style.display = "none";
         //document.getElementById("sectionmatches").style.display = "block";
         //document.getElementById("sectiontree").style.display = "none";
         //document.getElementById("sectionreset").style.display = "none";
