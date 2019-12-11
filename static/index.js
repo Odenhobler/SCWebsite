@@ -32,13 +32,89 @@ function switchDivs() {
 }
 
 function makeTableHTML(parray, carray) {
-    var result = "<table border=1>";
+    var result = '<table class="rostertable">';
     for(var i=0; i<parray.length; i++) {
         result += "<tr>";
         // result += "<td>" + myArray[0].length + "</td>";
-        result += "<td>"+parray[i]+"</td>";
+        result += '<td class="rostertablecellplayer">'+parray[i]+'</td>';
         for(var j=0; j<numberOfSpielfeld; j++){
-            result += "<td>"+carray[i][j]+"</td>";
+            //result += "<td>"+carray[i][j]+"</td>";        working solution; shows ints
+            if (carray[i][j] == 0) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_2b-icon.jpg" alt="2B"><br>2B'
+            } 
+            if (carray[i][j] == 1) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_amy-icon.jpg" alt="amy"><br>Amy'
+            } 
+            if (carray[i][j] == 2) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_astaroth-icon.jpg" alt="astaroth"><br>Astaroth'
+            } 
+            if (carray[i][j] == 3) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_azwell-icon.jpg" alt="azwell"><br>Azwell'
+            } 
+            if (carray[i][j] == 4) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_cassandra-icon.jpg" alt="cassandra"><br>Cassandra'
+            } 
+            if (carray[i][j] == 5) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_cervantes-icon.jpg" alt="cervantes"><br>Cervantes'
+            } 
+            if (carray[i][j] == 6) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_geralt-icon.jpg" alt="geralt"><br>Geralt'
+            } 
+            if (carray[i][j] == 7) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_grau-icon.jpg" alt="groh"><br>Groh'
+            } 
+            if (carray[i][j] == 8) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_hilde-icon.jpg" alt="hilde"><br>Hilde'
+            } 
+            if (carray[i][j] == 9) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_ivy-icon.jpg" alt="ivy"><br>Ivy'
+            } 
+            if (carray[i][j] == 10) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_kilik-icon.jpg" alt="kilik"><br>Kilik'
+            } 
+            if (carray[i][j] == 11) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_maxi-icon.jpg" alt="maxi"><br>Maxi'
+            } 
+            if (carray[i][j] == 12) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_mina-icon.jpg" alt="seongmina"><br>Seong-Mina'
+            } 
+            if (carray[i][j] == 13) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_mitsurugi-icon.jpg" alt="mitsurugi"><br>Mitsurugi'
+            } 
+            if (carray[i][j] == 14) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_nightmare-icon.jpg" alt="nightmare"><br>Nightmare'
+            } 
+            if (carray[i][j] == 15) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_raphael-icon.jpg" alt="raphael"><br>Raphael'
+            } 
+            if (carray[i][j] == 16) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_siegfried-icon.jpg" alt="siegfried"><br>Siggi'
+            } 
+            if (carray[i][j] == 17) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_sophitia-icon.jpg" alt="sophitia"><br>Sophitia'
+            } 
+            if (carray[i][j] == 18) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_taki-icon.jpg" alt="taki"><br>Taki'
+            } 
+            if (carray[i][j] == 19) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_talim-icon.jpg" alt="talim"><br>Talim'
+            } 
+            if (carray[i][j] == 20) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_tira-icon.jpg" alt="tira"><br>Tira'
+            } 
+            if (carray[i][j] == 21) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_voldo-icon.jpg" alt="voldo"><br>Voldo'
+            } 
+            if (carray[i][j] == 22) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_xianghua-icon.jpg" alt="xianghua"><br>Xianghua'
+            } 
+            if (carray[i][j] == 23) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_yoshimitsu-icon.jpg" alt="yoshimitsu"><br>Yoshimitsu'
+            } 
+            if (carray[i][j] == 24) {
+                iconFighter = '<img class="icon" src="../static/icons/sc6_zasalamel-icon.jpg" alt="zasalamel"><br>Zasalamel'
+            } 
+            result += '<td class="rostertablecellfighter">'+iconFighter+'</td>';
         }
         result += "</tr>";
     }

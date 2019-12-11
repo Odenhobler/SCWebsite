@@ -92,3 +92,28 @@ td {
   border-style: solid;
   background-color: whitesmoke;
 }
+
+.rostertable {
+  border: none;
+}
+
+.rostertablecellplayer {
+  font-size: 18px;
+  background-color: whitesmoke;
+  color: #0099ff;
+  text-align: center;
+  margin: 10px;
+  padding: 15px;
+}
+
+.rostertablecellfighter {
+  text-align: center;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.icon {
+  border: 2px solid whitesmoke;
+  width: 40px;
+  height: 40px;
+}
