@@ -15,51 +15,17 @@
 </head>
 <body>
     <div class="fixedheader" style="display: block;">
-        <div class="video" id="twitchframe"></div>
-        <!-- <iframe class="video" src="https://www.youtube.com/embed/dOVN70pYEPA" allowfullscreen></iframe> allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" -->
+        <div id="twitchframe"></div>
         <div>
-            <table class="table">
-                
-                <tr>
-                    <td><button class="buttonheader" id="btnmatches">Begegnungen</button></td>
-                </tr>
-                <tr>
-                    <td><button class="buttonheader" id="btntree">Baum</button></td>
-                </tr>
-                <tr>
-                    <td><button class="buttonheader" id="btnlobby">Lobby</button></td>
-                </tr>
-                <tr>
-                    <td><button class="buttonheader" id="btnreset">Reset</button></td>
-                </tr>
-            </table>
+          <button class="buttonheader" id="btnreset">R<br>S<br>T</button>
         </div>
     </div>
     <div id="sectionlobby" class="content" style="display: block;">
         <h1>Lobby</h1>
-        <button class="buttoncontent" id="btnaddp" style="display: none;">Eintragen +</button>
+        <button class="buttoncontent" id="btnaddp">Eintragen +</button>
+        <button class="buttoncontent" id="btnrefresh">Aktualisieren</button>
         <p id="placementdummy"></p>
         <p id="rt"></p>
-    </div>
-    <div id="sectionmatches" class="content" style="display: none;">
-        <h1>Begegnungen</h1>
-        <div id="livelist"></div>
-    </div>
-    <div id="sectiontree" class="content" style="display: none;">
-        <h1>Turnierbaum</h1>
-    </div>
-    <div id="sectionreset" class="content" style="display: none;">
-        <p>States: <br> 
-            0 = Turnier noch nicht initiiert<br>
-            1 = Turnier initiiert, aber noch nicht gestartet, wartet auf Eingabe der Spieler <br>
-            2 = Turnier läuft        <br>
-            </p>
-            <button class="buttoncontent" id="buttonsetto0">Set to 0</button>
-            <button class="buttoncontent" id="buttonsetto1">Set to 1</button>
-            <button class="buttoncontent" id="buttonsetto2">Set to 2</button>
-            <button class="buttoncontent" id="buttonkickplayer">Kick Player</button>
-            <button class="buttoncontent" id="buttonaddnewplayer">Eintragen</button>
-            <button class="buttoncontent" id="btntest">Testalert</button>
     </div>
     <script src="../static/index.js"></script> 
 </body>

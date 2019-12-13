@@ -36,42 +36,29 @@ p {
     border-width: 3px;
     border-bottom-style: solid;
     border-bottom-color: whitesmoke;
-    background-color: whitesmoke;
-    font-size: 30px;
-}
-
-.table {
-  float: right;
-  background-color: whitesmoke;
-  top: 0px;
-  width: 50%;
-  border-left: none;
-}
-
-td {
-  background-color: #0099ff;
-  border-radius: 3px;
-  border-left: none;
+    background-color: #0099ff;
 }
 
 .buttonheader {
-  width: 100%;
-  font-size: 22px;
-  height: 40px;
+  float: right;
+  background-color: #0099ff;
+  width: 30%;
+  height: 150px;
+  top: 0px;
+  float: right;
   text-align: center;
   color: whitesmoke;
-  border: 1px;
-  border-color: #0099ff;
+  border: 3px;
+  border-left: none;
+  border-color: whitesmoke;
   border-style: solid;
-  background-color: #0099ff;
 }
 
 .video {
-    width: 50%; 
+    width: 70%;
     height: 100%;
     border: none;
     float: left;
-    margin-bottom: 1px;
 }
 
 .content {
