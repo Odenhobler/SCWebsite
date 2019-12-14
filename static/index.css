@@ -39,26 +39,37 @@ p {
     background-color: #0099ff;
 }
 
-.buttonheader {
-  float: right;
-  background-color: #0099ff;
+.video {
+  width: 70%;
+  height: 100%;
+  border: none;
+  float: left;
+}
+
+.tableheader {
   width: 30%;
-  height: 150px;
+  height: 100%;
   top: 0px;
   float: right;
-  text-align: center;
-  color: whitesmoke;
   border: 3px;
   border-left: none;
   border-color: whitesmoke;
   border-style: solid;
 }
 
-.video {
-    width: 70%;
-    height: 100%;
-    border: none;
-    float: left;
+.headericon {
+  height: ;  
+}
+
+.buttonheader {
+  font-size: 18px;
+  height: 40px;
+  text-align: center;
+  color: #0099ff;
+  border: 1px;
+  border-color: #0099ff;
+  border-style: solid;
+  background-color: whitesmoke;
 }
 
 .content {
