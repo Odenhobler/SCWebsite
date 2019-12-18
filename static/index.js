@@ -72,7 +72,7 @@ function makeTableHTML(parray, carray, rseed) {
     for(var i=0; i<parray.length; i++) {
         result += "<tr>";
         // result += "<td>" + myArray[0].length + "</td>";
-        result += '<td class="rostertablecellplayer">'+parray[i]+'</td>';
+        result += '<td class="rostertablecellplayer">'+parray[i]+'<br>'+rseed[i*2]+' | '+rseed[i*2+1]+'</td>';
         for(var j=0; j<numberOfSpielfeld; j++){
             //result += "<td>"+carray[i][j]+"</td>";        working solution; shows ints
             if (carray[i][j] == 0) {
@@ -150,7 +150,7 @@ function makeTableHTML(parray, carray, rseed) {
             if (carray[i][j] == 24) {
                 iconFighter = '<img class="icon" src="../static/icons/sc6_zasalamel-icon.jpg" alt="zasalamel"><br>Zasalamel'
             } 
-            result += '<td class="rostertablecellfighter">'+iconFighter+rseed+'</td>';
+            result += '<td class="rostertablecellfighter">'+iconFighter+'</td>';
         }
         result += "</tr>";
     }
