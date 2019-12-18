@@ -155,7 +155,7 @@ function makeTableHTML(parray, carray, rseed, rfield) {
             } 
             result += '<td class="rostertablecellfighter">'+iconFighter+'</td>';
         }
-        result += '<td class="cellrandomseed">  '+rfield[i*2]+' | '+rfield[i*2+1]+'<br>'+rseed[i*2]+' | '+rseed[i*2+1]+'</td></tr>';
+        result += '<td class="cellrandomseed">Seed:<br>'+rfield[i*2]+' | '+rfield[i*2+1]+'<br>'+rseed[i*2]+' | '+rseed[i*2+1]+'</td></tr>';
     }
     result += '</table>';
 
