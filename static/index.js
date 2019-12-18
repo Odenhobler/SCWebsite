@@ -165,7 +165,6 @@ function playerListToLobby(){
 
 //      BUTTONS 
 document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
-document.getElementById("btnreset").addEventListener('click',resetLobby,false); //set playerlist empty and print player list
 //document.getElementById("btnrefresh").addEventListener('click', godFunction(4, 0, 0), false); // doesn't work for whatever reason
 
 
