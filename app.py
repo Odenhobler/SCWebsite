@@ -14,11 +14,21 @@ class lop:  #list of players
     names = []
     chars = []
     rseed = []
+    rfield = []
     def info(self, i):
         if i is None:
             print("names: " + str(self.names) + ", chars: " + str(self.chars))
         else:
             print("index: " + str(i), "name: " + str(self.names[i]) + ", char: " + str(self.chars[i]))
+    
+    def append_a_b(self):
+        randomnumber = random.randrange(0,100,1)
+        if randomnumber >= 50:
+            self.rfield.append("A")
+            self.rfield.append("B")
+        else:
+            self.rfield.append("B")
+            self.rfield.append("A")
 listOfPlayers = lop()
 
 @app.route('/')
@@ -71,7 +81,8 @@ def get_state():
             numberOfSpielfeld=cpp,
             listOfPlayers=listOfPlayers.names,
             listOfChars=listOfPlayers.chars,
-            randomSeed=listOfPlayers.rseed
+            randomSeed=listOfPlayers.rseed,
+            randomField=listOfPlayers.rfield
         )
 
 # Add player
@@ -90,16 +101,18 @@ def add_player():
         listOfPlayers.chars.append(inp['chars'])
         listOfPlayers.rseed.append(random.randrange(0,100,1))
         listOfPlayers.rseed.append(random.randrange(0,100,1))
+        listOfPlayers.append_a_b()
     else:
         print ("Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
         return jsonify(alert = "Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
     # else: return jsonify(alert = "Need POST method"), 400
-    print ([listOfPlayers.names,listOfPlayers.chars,listOfPlayers.rseed])
+    print ([listOfPlayers.names,listOfPlayers.chars,listOfPlayers.rseed,listOfPlayers.rfield])
     return jsonify(
         # listOfPlayers=[listOfPlayers.names,listOfPlayers.chars]
         listOfPlayers=listOfPlayers.names,
         listOfChars=listOfPlayers.chars,
-        randomSeed=listOfPlayers.rseed
+        randomSeed=listOfPlayers.rseed,
+        randomField=listOfPlayers.rfield
     ), 200
 
 @app.route('/kickplayer')

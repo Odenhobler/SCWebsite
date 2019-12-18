@@ -16,6 +16,8 @@ function godFunction(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abf
             numberOfSpielfeld = data.numberOfSpielfeld;
             listOfPlayers = data.listOfPlayers;
             listOfChars = data.listOfChars;
+            randomSeed = data.randomSeed;
+            randomField = data.randomField;
             playerListToLobby();
         });
 }
@@ -63,16 +65,17 @@ function addPlayer(){
         listOfPlayers = data.listOfPlayers;
         listOfChars = data.listOfChars;
         randomSeed = data.randomSeed;
+        randomField = data.randomField;
         playerListToLobby(); }
       });
 }
 
-function makeTableHTML(parray, carray, rseed) {
+function makeTableHTML(parray, carray, rseed, rfield) {
     var result = '<table class="rostertable">';
     for(var i=0; i<parray.length; i++) {
-        result += "<tr>";
+        result += '<tr>';
         // result += "<td>" + myArray[0].length + "</td>";
-        result += '<td class="rostertablecellplayer">'+parray[i]+'<br>'+rseed[i*2]+' | '+rseed[i*2+1]+'</td>';
+        result += '<td class="rostertablecellplayer">'+parray[i]+'</td>';
         for(var j=0; j<numberOfSpielfeld; j++){
             //result += "<td>"+carray[i][j]+"</td>";        working solution; shows ints
             if (carray[i][j] == 0) {
@@ -152,15 +155,15 @@ function makeTableHTML(parray, carray, rseed) {
             } 
             result += '<td class="rostertablecellfighter">'+iconFighter+'</td>';
         }
-        result += "</tr>";
+        result += '<td class="cellrandomseed">  '+rfield[i*2]+' | '+rfield[i*2+1]+'<br>'+rseed[i*2]+' | '+rseed[i*2+1]+'</td></tr>';
     }
-    result += "</table>";
+    result += '</table>';
 
     return result;
 }
 
 function playerListToLobby(){
-    document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars, randomSeed);
+    document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars, randomSeed, randomField);
 }
 
 //button new player 
