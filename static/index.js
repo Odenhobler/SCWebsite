@@ -62,11 +62,12 @@ function addPlayer(){
       success: function(data) {
         listOfPlayers = data.listOfPlayers;
         listOfChars = data.listOfChars;
+        randomSeed = data.randomSeed;
         playerListToLobby(); }
       });
 }
 
-function makeTableHTML(parray, carray) {
+function makeTableHTML(parray, carray, rseed) {
     var result = '<table class="rostertable">';
     for(var i=0; i<parray.length; i++) {
         result += "<tr>";
@@ -149,7 +150,7 @@ function makeTableHTML(parray, carray) {
             if (carray[i][j] == 24) {
                 iconFighter = '<img class="icon" src="../static/icons/sc6_zasalamel-icon.jpg" alt="zasalamel"><br>Zasalamel'
             } 
-            result += '<td class="rostertablecellfighter">'+iconFighter+'</td>';
+            result += '<td class="rostertablecellfighter">'+iconFighter+rseed+'</td>';
         }
         result += "</tr>";
     }
@@ -159,7 +160,7 @@ function makeTableHTML(parray, carray) {
 }
 
 function playerListToLobby(){
-    document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars);
+    document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars, randomSeed);
 }
 
 //button new player 

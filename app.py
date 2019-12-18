@@ -3,6 +3,8 @@ from flask import Flask, render_template, jsonify, request
 from trees import *
 app = Flask (__name__, static_url_path='/static')
 
+import random
+
 state = 0 #0 before initialization, 1 after, 2 for running tournament
 mode = 1
 #Possible tournament modes: 0 Single Elimination; 1 Double; 2 Triple; 3 League; 4 League + Play-Offs
@@ -10,7 +12,8 @@ cpp = 2    #Characters per player. 1 in League modes, 1-3 in Elimination modes
 
 class lop:  #list of players
     names = []
-    chars = [42]
+    chars = []
+    rseed = []
     def info(self, i):
         if i is None:
             print("names: " + str(self.names) + ", chars: " + str(self.chars))
@@ -67,7 +70,8 @@ def get_state():
             tournamentMode=mode,
             numberOfSpielfeld=cpp,
             listOfPlayers=listOfPlayers.names,
-            listOfChars=listOfPlayers.chars
+            listOfChars=listOfPlayers.chars,
+            randomSeed=listOfPlayers.rseed
         )
 
 # Add player
@@ -84,6 +88,8 @@ def add_player():
     if len(inp['chars']) == cpp:
         listOfPlayers.names.append(inp['name'])
         listOfPlayers.chars.append(inp['chars'])
+        listOfPlayers.rseed.append(random.randrange(0,100,1))
+        listOfPlayers.rseed.append(random.randrange(0,100,1))
     else:
         print ("Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
         return jsonify(alert = "Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
@@ -92,7 +98,8 @@ def add_player():
     return jsonify(
         # listOfPlayers=[listOfPlayers.names,listOfPlayers.chars]
         listOfPlayers=listOfPlayers.names,
-        listOfChars=listOfPlayers.chars
+        listOfChars=listOfPlayers.chars,
+        randomSeed=listOfPlayers.rseed
     ), 200
 
 @app.route('/kickplayer')
