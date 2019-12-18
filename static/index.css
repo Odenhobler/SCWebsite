@@ -76,7 +76,7 @@ p {
 }
 
 .buttoncontent {
-  margin-left: 5%;
+  margin: 10px;
   font-size: 18px;
   height: 40px;
   text-align: center;

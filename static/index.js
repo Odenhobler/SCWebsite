@@ -24,11 +24,6 @@ function godFunction(newState, newMode, newSpielfeld) {    //Bei state=4 nur Abf
 
 document.addEventListener('DOMContentLoaded', godFunction(4, 0, 0), false);
 
-//      HEADER
-
-document.getElementById("btnreset").addEventListener('click',resetLobby,false);
-document.getElementById("btnrefresh").addEventListener('click',godFunction(4,0,0),false);
-
 function resetLobby() {
     //reset lobby
 }
@@ -166,12 +161,13 @@ function playerListToLobby(){
     document.getElementById("rt").innerHTML = makeTableHTML(listOfPlayers, listOfChars, randomSeed, randomField);
 }
 
-//button new player 
+
+
+//      BUTTONS 
 document.getElementById("btnaddp").addEventListener('click',addPlayer,false);
+document.getElementById("btnreset").addEventListener('click',resetLobby,false); //set playerlist empty and print player list
+//document.getElementById("btnrefresh").addEventListener('click', godFunction(4, 0, 0), false); // doesn't work for whatever reason
 
-//      RESET
-
-//just one button, get empty player list
 
 //needed? reset may be fine
 function kickPlayer() {

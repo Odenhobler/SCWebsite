@@ -9,12 +9,14 @@ state = 0 #0 before initialization, 1 after, 2 for running tournament
 mode = 1
 #Possible tournament modes: 0 Single Elimination; 1 Double; 2 Triple; 3 League; 4 League + Play-Offs
 cpp = 2    #Characters per player. 1 in League modes, 1-3 in Elimination modes
+            # NEEDS TO BE FIXED TO 2 FOR 2019/12/20
 
 class lop:  #list of players
-    names = []
-    chars = []
-    rseed = []
-    rfield = []
+    def __init__(self):
+        self.names = []
+        self.chars = []
+        self.rseed = []
+        self.rfield = []
     def info(self, i):
         if i is None:
             print("names: " + str(self.names) + ", chars: " + str(self.chars))
@@ -84,6 +86,11 @@ def get_state():
             randomSeed=listOfPlayers.rseed,
             randomField=listOfPlayers.rfield
         )
+# Reset lobby
+def reset_lobby():
+    global listOfPlayers
+    del listOfPlayers
+    listOfPlayers = lop()
 
 # Add player
 @app.route('/listofplayers', methods=['POST'])
@@ -106,6 +113,9 @@ def add_player():
         print ("Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
         return jsonify(alert = "Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
     # else: return jsonify(alert = "Need POST method"), 400
+    if inp['name'] == 'totalreset':
+        print ('hier müsste nun eigentlich ein reset stattfinden')
+        reset_lobby()
     print ([listOfPlayers.names,listOfPlayers.chars,listOfPlayers.rseed,listOfPlayers.rfield])
     return jsonify(
         # listOfPlayers=[listOfPlayers.names,listOfPlayers.chars]

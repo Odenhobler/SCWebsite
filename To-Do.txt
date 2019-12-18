@@ -5,3 +5,5 @@ Reset-Button
 Kick-Button
 
 Input mit Jquery
+
+Leute rauskreuzen?
