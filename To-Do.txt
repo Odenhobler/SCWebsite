@@ -1,9 +1,44 @@
-Aktualisieren-Button
-
-Reset-Button
-
 Kick-Button
 
 Input mit Jquery
 
-Leute rauskreuzen?
+Leute rauskreuzen
+
+
+function fnOpenNormalDialog() {
+    // Define the Dialog and its properties.
+    $("#dialog-confirm").dialog({
+        resizable: false,
+        modal: true,
+        title: "Modal",
+        height: 250,
+        width: 400,
+        create: function (e, ui) {
+            var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
+            $("<label class='shut-up' ><input  type='checkbox'/> Stop asking!</label>").prependTo(pane)
+        },
+        buttons: {
+            "Yes": function () {
+                $(this).dialog('close');
+                callback(true);
+            },
+                "No": function () {
+                $(this).dialog('close');
+                callback(false);
+            }
+        }
+    });
+}
+
+$('#btnOpenDialog').click(fnOpenNormalDialog);
+$(document).on("change", ".shut-up input", function () {
+    alert("shut up! " + this.checked)
+})
+
+function callback(value) {
+    if (value) {
+        alert("Confirmed");
+    } else {
+        alert("Rejected");
+    }
+}
