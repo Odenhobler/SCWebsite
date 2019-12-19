@@ -4,41 +4,23 @@ Input mit Jquery
 
 Leute rauskreuzen
 
+Übernommen aus der (nun gelöschten) backend.py:
 
-function fnOpenNormalDialog() {
-    // Define the Dialog and its properties.
-    $("#dialog-confirm").dialog({
-        resizable: false,
-        modal: true,
-        title: "Modal",
-        height: 250,
-        width: 400,
-        create: function (e, ui) {
-            var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
-            $("<label class='shut-up' ><input  type='checkbox'/> Stop asking!</label>").prependTo(pane)
-        },
-        buttons: {
-            "Yes": function () {
-                $(this).dialog('close');
-                callback(true);
-            },
-                "No": function () {
-                $(this).dialog('close');
-                callback(false);
-            }
-        }
-    });
-}
+'''
+Aufgabe des Backends: Generiere Turnierschema
 
-$('#btnOpenDialog').click(fnOpenNormalDialog);
-$(document).on("change", ".shut-up input", function () {
-    alert("shut up! " + this.checked)
-})
+x-beliebiger Anfangszustand: Double Elim, 1 Spielfeld, tournamentState=0 (pre-tournament; 1=running tournament)
 
-function callback(value) {
-    if (value) {
-        alert("Confirmed");
-    } else {
-        alert("Rejected");
-    }
-}
+Reset-Funktion:
+Input von Frontend:
+    Turniermodus
+        Optionen: Liga, Liga mit Playoffs (HF/F), Double Elim, Triple Elim
+        (Optional: Gruppensystem (ggf. mit mehreren Charakteren pro Spieler?))
+        Bei Elim: Anzahl der "Spielfelder" (=Anzahl Charaktere pro Spieler)
+Output an Frontend:
+    tournamentState=0, Anzahl Spielfelder, Modus (also im Grunde Echo des Inputs)
+    Alles in Variablen gespeichert
+Laufender Input von Frontend:
+    newPlayer (Name, Charaktere) -> in listOfPlayers eintragen, listOfPlayers als Output an Frontend
+    beginTournament -> Turnierbaum erstellen, tournamentState=1 setzen
+'''
