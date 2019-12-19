@@ -114,7 +114,6 @@ def add_player():
         return jsonify(alert = "Falsche Anzahl an Charakteren. Eingegeben " + str(len(inp['chars'])) + ", erwartet " + str(cpp) )
     # else: return jsonify(alert = "Need POST method"), 400
     if inp['name'] == 'totalreset':
-        print('hier müsste nun eigentlich ein reset stattfinden')
         reset_lobby()
     print ([listOfPlayers.names,listOfPlayers.chars,listOfPlayers.rseed,listOfPlayers.rfield])
     return jsonify(
