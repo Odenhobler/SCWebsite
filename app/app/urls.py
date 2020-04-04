@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from url_checker.views import check_url
+from sc_league import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('url_checker', check_url),
+    path('sc_league/', include('sc_league.urls')),
 ]
