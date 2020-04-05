@@ -13,8 +13,13 @@ this.createDatabaseEntry = this.createDatabaseEntry.bind(this);
 }
 
 createDatabaseEntry(event) {
+  let playerA = prompt("Player A?");
+  let playerB = prompt("Player B?");
+  let charA = prompt("charA?");
+  let charB = prompt("charB?");
+  let wonsetsA = prompt("WonsetsA?");
+  let wonsetsB = prompt("wonsets B?")
   axios
-    //let 
     .post("/sc_league/", "Das ist das POST-Objekt")
     .then(res => {
       alert(res.data)
