@@ -2,8 +2,10 @@ http://v1k45.com/blog/modern-django-part-1-setting-up-django-and-react/
 	-->veraltet, nicht benuzten
 
 https://blog.logrocket.com/creating-an-app-with-react-and-django/
-
+	--> dito
+	
 https://www.youtube.com/watch?v=dGcsHMXbSOA&t=770s
+	--> für React
 
 https://medium.com/@zackliutju/building-react-and-django-web-application-and-deploy-it-on-google-cloud-545f06eb5521
 		--> aktueller Versuch (02.04.2020), läuft (url-checker)
