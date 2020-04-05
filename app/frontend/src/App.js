@@ -6,29 +6,40 @@ import './App.css';
 class App extends Component{
   constructor() {
     super();
-    this.state = {
+    /*this.state = {
       url: '',
-    }
-this.handleSubmit = this.handleSubmit.bind(this);
+    }*/               //ok I THINK this might just set the variable to zero which can then be altered and passed via POST
+this.createDatabaseEntry = this.createDatabaseEntry.bind(this);
 }
 
-handleSubmit(event) {
+createDatabaseEntry(event) {
   axios
-    .post("/sc_league/", this.state.url)
+    //let 
+    .post("/sc_league/", "Das ist das POST-Objekt")
     .then(res => {
       alert(res.data)
     })
   event.preventDefault();
 };
+
+// I think the actual html fully belongs here, not sure why they put everything 
+//in the header without body though, especially why within a div 
+//--> BECAUSE THIS IS THE ROOT-DIV WHICH IS IN THE BODY OF THE SERVED PUBLIC/INDEX.HTML. 
+//Maybe see this: https://reactjs.org/docs/fragments.html
 render() {
   return (
     <div className="App">
       <header className="App-header">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.createDatabaseEntry}>
             <input type="submit" value="show database dummy" />
         </form>
       </header>
     </div>
+    /*<div>
+      <body>
+        <p>blabla</p>
+      </body>
+    </div>*/
   );
 }
 }
