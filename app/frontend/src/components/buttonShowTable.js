@@ -10,9 +10,20 @@ function ButtonShowTable(){
 };
 
 function makeDumbJoke() {
-  alert ("but nothing will happen")
+  axios
+    .post("/sc_league/", "Das ist das POST-Objekt")
+    .then(res => {
+      alert(res.data)
+    })
 };
   
-
-
 export default ButtonShowTable;
+
+/*
+  axios
+    .post("/sc_league/", "Das ist das POST-Objekt")
+    .then(res => {
+      alert(res.data)
+    })
+  event.preventDefault();
+};*/
