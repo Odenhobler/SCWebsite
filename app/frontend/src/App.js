@@ -16,14 +16,3 @@ return(
 };
 
 export default App;
-
-
-
-/*
-  axios
-    .post("/sc_league/", "Das ist das POST-Objekt")
-    .then(res => {
-      alert(res.data)
-    })
-  event.preventDefault();
-};*/

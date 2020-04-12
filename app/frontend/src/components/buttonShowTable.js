@@ -15,15 +15,9 @@ function makeDumbJoke() {
     .then(res => {
       alert(res.data)
     })
+  //event.preventDefault(); this produced an error, no idea why it was used in the 
+  //tutorial file in the first place though
 };
   
 export default ButtonShowTable;
 
-/*
-  axios
-    .post("/sc_league/", "Das ist das POST-Objekt")
-    .then(res => {
-      alert(res.data)
-    })
-  event.preventDefault();
-};*/
