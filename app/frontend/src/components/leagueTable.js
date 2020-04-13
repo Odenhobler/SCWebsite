@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 
-function ButtonShowTable(){
+function writeLeagueTable(){
   return(
     <div>
-      <button onClick={makeDumbJoke}>show league table</button>
+      <table></table>
     </div>
     )
 };
@@ -20,4 +20,3 @@ function makeDumbJoke() {
 };
   
 export default ButtonShowTable;
-
