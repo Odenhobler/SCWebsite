@@ -10,13 +10,13 @@ def index(request):
 
 @csrf_exempt 
 def blabla(request):
+    print("BLABLASLADASD")
     return HttpResponse("but backend tells you to goblabla")
 
 @csrf_exempt 
 def ask_for_table(request):
     print("HELLO!!!")
-    for p in Player.objects.raw('SELECT * FROM league')
-        print(p)
-    
+    # for p in Player.objects.raw('SELECT * FROM league')
+    #     print(p)  
     return HttpResponse("but backend tells you to goblabla")
 
