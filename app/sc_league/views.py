@@ -17,7 +17,7 @@ def blabla(request):
 def ask_for_table(request):
     print("HELLO!!!")
     for p in models.Player.objects.raw('SELECT * FROM league'):
-        print(p)
+        print(p.pname)
     
     return HttpResponse("but backend tells you to goblablaflask")
 

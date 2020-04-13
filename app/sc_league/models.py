@@ -3,4 +3,4 @@ from django.db import models
 # Create your models here.
 
 class Player(models.Model):
-    player_name = models.CharField(..., max_length = 32)
+    pname = models.CharField(db_column = 'player_name', max_length = 32, primary_key=True)
