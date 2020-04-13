@@ -12,5 +12,6 @@ def blabla(request):
 
 @csrf_exempt 
 def ask_for_table(request):
+    
     return HttpResponse("but backend tells you to goblabla")
 
