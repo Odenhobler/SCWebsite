@@ -15,8 +15,8 @@ def blabla(request):
 @csrf_exempt 
 def ask_for_table(request):
     print("HELLO!!!")
-    for p in Player.objects.raw('SELECT * FROM league')
-        print(p)
+    for p in models.Player.objects.raw('SELECT * FROM league'):
+        print(p.player_name)
     
-    return HttpResponse("but backend tells you to goblabla")
+    return HttpResponse("but backend tells you to goblablaflask")
 
