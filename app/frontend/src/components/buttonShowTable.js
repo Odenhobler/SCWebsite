@@ -11,7 +11,7 @@ function ButtonShowTable(){
 
 function makeDumbJoke() {
   axios
-    .post("/sc_league/", "Das ist das POST-Objekt")
+    .post("/sc_league/blabla", "Das ist das POST-Objekt")
     .then(res => {
       alert(res.data)
     })
