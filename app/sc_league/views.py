@@ -17,5 +17,6 @@ def ask_for_table(request):
     print("HELLO!!!")
     for p in Player.objects.raw('SELECT * FROM league')
         print(p)
+    
     return HttpResponse("but backend tells you to goblabla")
 

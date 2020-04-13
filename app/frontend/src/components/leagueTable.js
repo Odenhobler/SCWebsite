@@ -17,7 +17,7 @@ function WriteLeagueTable(){
 
 function askForTable() {
     axios
-      .post("/sc_league/ask_for_table", "")
+      .post("/sc_league/ask_for_table", 1)
       .then(res => {
         alert(res.data)
       })
