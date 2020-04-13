@@ -1,5 +1,5 @@
 import React from "react";
-//import axios from "axios";
+//import axios from "axios";   seems to work without axios, axios is just needed in the components
 import './App.css';
 
 import Haydocboker from "./components/haydocboker";
