@@ -4,6 +4,7 @@ import './App.css';
 
 import Haydocboker from "./components/haydocboker";
 import ButtonShowTable from "./components/buttonShowTable";
+import WriteLeagueTable from "./components/leagueTable";
 
 //MAIN FUNCTION
 function App(){
@@ -11,6 +12,7 @@ return(
   <div className="App-header">
   <Haydocboker />
   <ButtonShowTable />
+  <WriteLeagueTable />
   </div>
 )
 };

@@ -1,22 +1,27 @@
 import React from "react";
 import axios from "axios";
 
-function writeLeagueTable(){
+function WriteLeagueTable(){
   return(
     <div>
-      <table></table>
+      <table>
+        <tr>
+          <th>dummy</th>
+          <th>dummy2</th>
+          <th>dummy3</th>
+        </tr>
+      </table>
     </div>
     )
 };
 
-function makeDumbJoke() {
-  axios
-    .post("/sc_league/blabla", "")
-    .then(res => {
-      alert(res.data)
-    })
-  //event.preventDefault(); this produced an error, no idea why it was used in the 
-  //tutorial file in the first place though
-};
-  
-export default ButtonShowTable;
+function askForTable() {
+    axios
+      .post("/sc_league/ask_for_table", "")
+      .then(res => {
+        alert(res.data)
+      })
+  };
+
+
+export default WriteLeagueTable;
