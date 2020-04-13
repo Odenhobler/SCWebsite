@@ -5,3 +5,5 @@ app/sc_league/__pycache__/views.cpython-38.pyc
 app/sc_league/__pycache__/urls.cpython-38.pyc
 app/sc_league/__pycache__/views.cpython-38.pyc
 *.pyc
+*.pyc
+*.pyc
