@@ -11,7 +11,6 @@ function App(){
 return(
   <div className="App-header">
   <Haydocboker />
-  <ButtonShowTable />
   <WriteLeagueTable />
   </div>
 )

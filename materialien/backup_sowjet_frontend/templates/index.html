@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to the Stage of History!</title>
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src= "https://player.twitch.tv/js/embed/v1.js"></script> <!-- Twitch Extension -->
+    <!--Skript hier im HTML laden und/oder auch im main.js?
+    
+    -->
+</head>
+<body>
+    <div class="fixedheader" style="display: block;">
+        <div class="video" id="twitchframe"></div>
+        <p class="cellheader">SC6 III<br>20.12.19</p>
+    </div>
+    <div id="sectionlobby" class="content" style="display: block;">
+        <h1>Lobby</h1>
+        <button class="buttoncontent" id="btnaddp">Eintragen +</button>
+        <div id="inputfield" class="inputfield" style="display: none;">
+            <form>
+            <p>Name:</p>
+            <input type="text" id="inputname">
+           <p>Charaktere:</p>
+            <select id="charone">
+              <option>2B</option>
+              <option>Amy</option>
+              <option>Astaroth</option>
+              <option>Azwell</option>
+              <option>Cassandra</option>
+              <option>Cervantes</option>
+              <option>Geralt</option>
+              <option>Groh</option>
+              <option>Hilde</option>
+              <option>Ivy</option>
+              <option>Kilik</option>
+              <option>Maxi</option>
+              <option>Seong-Mina</option>
+              <option>Mitsurugi</option>
+              <option>Nightmare</option>
+              <option>Raphael</option>
+              <option>Siggi</option>
+              <option>Sophitia</option>
+              <option>Taki</option>
+              <option>Talim</option>
+              <option>Tira</option>
+              <option>Voldo</option>
+              <option>Xianghua</option>
+              <option>Yoshimitsu</option>
+              <option>Zasalamel</option>
+            </select>
+          
+            <select id="chartwo">
+              <option>2B</option>
+              <option>Amy</option>
+              <option>Astaroth</option>
+              <option>Azwell</option>
+              <option>Cassandra</option>
+              <option>Cervantes</option>
+              <option>Geralt</option>
+              <option>Groh</option>
+              <option>Hilde</option>
+              <option>Ivy</option>
+              <option>Kilik</option>
+              <option>Maxi</option>
+              <option>Seong-Mina</option>
+              <option>Mitsurugi</option>
+              <option>Nightmare</option>
+              <option>Raphael</option>
+              <option>Siggi</option>
+              <option>Sophitia</option>
+              <option>Taki</option>
+              <option>Talim</option>
+              <option>Tira</option>
+              <option>Voldo</option>
+              <option>Xianghua</option>
+              <option>Yoshimitsu</option>
+              <option>Zasalamel</option>
+            </select>
+          <br>
+          <br>
+            <input type="submit" id="submitname">
+           </form>
+        </div>
+        <!--<button class="buttoncontent" id="btnrefresh">Aktualisieren</button>-->
+        <p id="rt"></p>
+    </div>
+    <script src="../static/index.js"></script> 
+</body>
+</html>

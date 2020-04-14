@@ -9,3 +9,5 @@ https://www.youtube.com/watch?v=dGcsHMXbSOA&t=770s
 
 https://medium.com/@zackliutju/building-react-and-django-web-application-and-deploy-it-on-google-cloud-545f06eb5521
 		--> aktueller Versuch (02.04.2020), läuft (url-checker)
+
+Axios: https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/
