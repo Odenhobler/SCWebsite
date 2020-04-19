@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 from . import models
+from produce_league_table import produce_league_table 
 
 @csrf_exempt # needs to be implemented in order to circumvent some security token check
 def index(request):
