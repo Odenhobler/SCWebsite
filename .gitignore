@@ -7,3 +7,8 @@ app/sc_league/__pycache__/views.cpython-38.pyc
 *.pyc
 *.pyc
 *.pyc
+env/Scripts/activate
+env/Scripts/activate.bat
+app/sc_league/__pycache__/views.cpython-38.pyc
+app/sc_league/__pycache__/urls.cpython-38.pyc
+app/sc_league/__pycache__/models.cpython-38.pyc
