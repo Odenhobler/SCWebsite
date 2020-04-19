@@ -1,23 +1,24 @@
 import React from "react";
 import axios from "axios";
 
-function ButtonShowTable(){
+function TestButton(){
   return(
     <div>
-      <button onClick={makeDumbJoke}>show league table</button>
+      <button onClick={makeDumbJoke}>test button</button>
     </div>
     )
 };
 
 function makeDumbJoke() {
   axios
-    .post("/sc_league/blabla", "")
+    .post("/sc_league/produce_league_table", "")
     .then(res => {
-      alert(res.data)
+      alert("backend hat was geschickt, siehe log")
+      console.log(res.data);
     })
   //event.preventDefault(); this produced an error, no idea why it was used in the 
   //tutorial file in the first place though
 };
   
-export default ButtonShowTable;
+export default TestButton;
 

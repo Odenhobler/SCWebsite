@@ -32,7 +32,7 @@ class Match(models.Model):
     streamlink = models.CharField(max_length=12)
     location_a = models.CharField(max_length=12)
     location_b = models.CharField(max_length=12)
-    comments = models.CharField(max_length=12)
+    comment = models.CharField(max_length=12)
 
     def toDict(self):
         return {
@@ -53,7 +53,7 @@ class Match(models.Model):
         "streamlink": self.streamlink,
         "locationA": self.location_a,
         "locationB": self.location_b,
-        "comments": self.comments,
+        "comment": self.comment,
         }
 
 
