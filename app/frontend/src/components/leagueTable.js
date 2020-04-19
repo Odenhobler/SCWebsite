@@ -22,7 +22,7 @@ function WriteLeagueTable(){
 
   return(
     <div>
-      <p>{player.name + "ahja, weil er zuerst rendert"}</p>
+      <p>{player.name} ahja, weil er zuerst rendert</p>
     </div>
     )
 };
